@@ -79,7 +79,7 @@ async function poke() {
     }
     console.log(red.bold('*Ben is almost dead, you poked him too hard.*'));
     await sleep();
-    main();
+    return main();
 }
 
 async function talk() {
@@ -93,7 +93,7 @@ async function talk() {
         }
     }).then(answers => console.log(`${green.bold('Ben:')} ${answers.talking}`));
     await sleep();
-    main();
+    return main();
 }
 
 async function call() {
