@@ -96,18 +96,24 @@ async function call() {
             const valid = value.length > 0;
             return valid || `Ben has nothing to answer. Please enter something.`;
         }
-    }).then(answers => {
+    }).then(async answers => {
         if (~~(Math.random() * 14) === 0) calling = false;
         if (calling && answers.talking.toLowerCase() !== 'hang up') {
             console.log(`${green.bold('Ben:')} ${replies[~~(Math.random() * replies.length)]}\n`);
             return call();
         }
-        if (!calling) return console.log(red.bold('*Ben slams the phone down.*'));
+        if (!calling) {
+            console.log(red.bold('*Ben slams the phone down.*'));
+            await sleep();
+            main();
+        }
         if (answers.talking.toLowerCase() === 'hang up') {
-            return console.log(magenta.bold('*Newspaper sounds.*'));
+            console.log(magenta.bold('*Newspaper sounds.*'));
+            await sleep();
+            main();
         }
     });
-    await sleep();
+    await sleep(4000);
     main();
 }
 
