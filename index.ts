@@ -18,42 +18,52 @@ async function main() {
         type: 'list',
         name: 'choice',
         message: 'What would you like to do?',
-        choices: ['Poke Ben', 'Talk to Ben', 'Call Ben', 'Tickle Feet', 'Apple Juice', 'Feed Ben Beans', 'Burp', 'Credits', 'Quit']
+        choices: [
+            '[1] Poke Ben',
+            '[2] Talk to Ben',
+            '[3] Call Ben',
+            '[4] Tickle Feet',
+            '[5] Apple Juice',
+            '[6] Feed Ben Beans',
+            '[7] Burp',
+            '[8] Credits',
+            '[9] Quit'
+        ]
     }).then(answers => {
         switch (answers.choice) {
-            case 'Poke Ben': {
+            case '[1] Poke Ben': {
                 poke();
                 break;
             }
-            case 'Talk to Ben': {
+            case '[2] Talk to Ben': {
                 talk();
                 break;
             }
-            case 'Call Ben': {
+            case '[3] Call Ben': {
                 call();
                 break;
             }
-            case 'Tickle Feet': {
+            case '[4] Tickle Feet': {
                 tickle();
                 break;
             }
-            case 'Apple Juice': {
+            case '[5] Apple Juice': {
                 appleJuice();
                 break;
             }
-            case 'Feed Ben Beans': {
+            case '[6] Feed Ben Beans': {
                 beans();
                 break;
             }
-            case 'Burp': {
+            case '[7] Burp': {
                 burp();
                 break;
             }
-            case 'Credits': {
+            case '[8] Credits': {
                 credits();
                 break;
             }
-            case 'Quit': {
+            case '[9] Quit': {
                 quit();
                 break;
             }
@@ -100,47 +110,48 @@ async function call() {
         if (~~(Math.random() * 14) === 0) calling = false;
         if (calling && answers.talking.toLowerCase() !== 'hang up') {
             console.log(`${green.bold('Ben:')} ${replies[~~(Math.random() * replies.length)]}\n`);
+            await sleep();
             return call();
         }
         if (!calling) {
             console.log(red.bold('*Ben slams the phone down.*'));
             await sleep();
-            main();
+            return main();
         }
         if (answers.talking.toLowerCase() === 'hang up') {
             console.log(magenta.bold('*Newspaper sounds.*'));
             await sleep();
-            main();
+            return main();
         }
     });
     await sleep(4000);
-    main();
+    return main();
 }
 
 async function tickle() {
     console.log(`${green.bold('Ben:')} ${magenta.bold('Hohoho')}`);
     await sleep(3000);
-    main();
+    return main();
 }
 
 async function appleJuice() {
     console.log(`${green.bold('Ben:')} *Glug, glug, glug*`);
     console.log(`\n${green.bold('*Ben loved the apple juice!*')}`);
     await sleep();
-    main();
+    return main();
 }
 
 async function beans() {
     console.log(`${green.bold('Ben:')} *Glug, glug, glug*`);
     console.log(`\n${green.bold('*Ben chugs the beans!*')}`);
     await sleep();
-    main();
+    return main();
 }
 
 async function burp() {
     console.log(`${green.bold('Ben:')} ${green.bold('*Burp*')}`);
     await sleep();
-    main();
+    return main();
 }
 
 async function credits() {
@@ -151,7 +162,7 @@ ${magenta.bold('┃')}   By Duro    ${magenta.bold('┃')}
 ${magenta.bold('┗━━━━━━━━━━━━━━┛')}
 `);
     await sleep();
-    main();
+    return main();
 }
 
 async function quit() {
