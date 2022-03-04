@@ -1,0 +1,21 @@
+{
+  "name": "talking-ben",
+  "version": "1.0.0",
+  "description": "talking ben in typescript lol",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "terminal-img": "^2.0.24"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.4",
+    "@types/inquirer": "^8.2.0"
+  }
+}
