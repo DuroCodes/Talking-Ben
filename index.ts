@@ -2,9 +2,10 @@ import { cyan, green, magenta, red, yellow } from 'chalk';
 import { draw } from 'terminal-img';
 import { prompt } from 'inquirer';
 
+
 console.clear();
 
-const replies = [green.bold('Yes'), red.bold('No.'), magenta.bold('Hohoho'), yellow.bold('Bleugh')];
+const replies: string[] = [green.bold('Yes'), red.bold('No.'), magenta.bold('Hohoho'), yellow.bold('Bleugh')];
 main();
 
 const sleep = (ms: number = 2000) => new Promise(r => setTimeout(r, ms));
@@ -29,7 +30,7 @@ async function main() {
             '[8] Credits',
             '[9] Quit'
         ]
-    }).then(answers => {
+    }).then((answers: any) => {
         switch (answers.choice) {
             case '[1] Poke Ben': {
                 poke();
@@ -83,30 +84,31 @@ async function poke() {
 }
 
 async function talk() {
-    await await prompt({
+    await prompt({
         type: 'input',
         name: 'talking',
         message: 'Ben is listening...',
         validate(value) {
-            const valid = value.length > 0;
+            const valid: boolean = value.length > 0;
             return valid || `Ben has nothing to repeat. Please enter something.`;
         }
-    }).then(answers => console.log(`${green.bold('Ben:')} ${answers.talking}`));
+    }).then((answers: any) => console.log(`${green.bold('Ben:')} ${answers.talking}`));
     await sleep();
     return main();
 }
 
 async function call() {
-    let calling = true;
+    let calling: boolean = true;
+    console.log(`${green.bold('Ben:')} Bæn?`);
     await prompt({
         type: 'input',
         name: 'talking',
         message: 'Question for Ben:',
-        validate(value) {
-            const valid = value.length > 0;
+        validate(value: any) {
+            const valid: boolean = value.length > 0;
             return valid || `Ben has nothing to answer. Please enter something.`;
         }
-    }).then(async answers => {
+    }).then(async (answers: any) => {
         if (~~(Math.random() * 14) === 0) calling = false;
         if (calling && answers.talking.toLowerCase() !== 'hang up') {
             console.log(`${green.bold('Ben:')} ${replies[~~(Math.random() * replies.length)]}\n`);
