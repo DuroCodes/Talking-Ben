@@ -1,7 +1,6 @@
-import { cyan, green, magenta, red, yellow } from 'chalk';
+import { bold, cyan, green, magenta, red, yellow } from 'chalk';
 import { draw } from 'terminal-img';
 import { prompt } from 'inquirer';
-
 
 console.clear();
 
@@ -99,7 +98,6 @@ async function talk() {
 
 async function call() {
     let calling: boolean = true;
-    console.log(`${green.bold('Ben:')} Bæn?`);
     await prompt({
         type: 'input',
         name: 'talking',
@@ -159,7 +157,7 @@ async function burp() {
 async function credits() {
     console.log(`
 ${magenta.bold('┏━━━━━━━━━━━━━━┓')}
-${magenta.bold('┃')} Made with ${red.bold('')}  ${magenta.bold('┃')}
+${magenta.bold('┃')} Made with ${red.bold('❤️')}  ${magenta.bold('┃')}
 ${magenta.bold('┃')}   By Duro    ${magenta.bold('┃')}
 ${magenta.bold('┗━━━━━━━━━━━━━━┛')}
 `);
