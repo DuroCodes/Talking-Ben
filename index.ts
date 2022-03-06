@@ -1,4 +1,4 @@
-import { bold, cyan, green, magenta, red, yellow } from 'chalk';
+import { cyan, green, magenta, red, yellow } from 'chalk';
 import { draw } from 'terminal-img';
 import { prompt } from 'inquirer';
 
