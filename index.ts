@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-bitwise */
