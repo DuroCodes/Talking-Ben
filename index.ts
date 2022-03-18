@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-promise-executor-return */
 /* eslint-disable no-use-before-define */
-/* eslint-disable no-bitwise */
 /* eslint-disable no-console */
 import {
   cyan, green, magenta, red, yellow,
@@ -86,7 +85,7 @@ async function main() {
 }
 
 async function poke() {
-  if (~~(Math.random() * 20) !== 1) {
+  if (Math.floor(Math.random() * 20) !== 1) {
     console.log(red.bold('*Ben is disappointed.*'));
     await sleep();
     return main();
@@ -121,10 +120,10 @@ async function call() {
       return valid || 'Ben has nothing to answer. Please enter something.';
     },
   }).then(async (answers: any) => {
-    if (~~(Math.random() * 14) === 0) calling = false;
+    if (Math.floor(Math.random() * 14) === 0) calling = false;
     if (calling && answers.talking.toLowerCase() !== 'hang up') {
       console.log(
-        `${green.bold('Ben:')} ${replies[~~(Math.random() * replies.length)]}\n`,
+        `${green.bold('Ben:')} ${replies[Math.floor(Math.random() * replies.length)]}\n`,
       );
       await sleep();
       return call();
