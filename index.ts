@@ -144,7 +144,7 @@ async function call() {
 }
 
 async function tickle() {
-  console.log(`${green.bold('Ben:')} ${magenta.bold('Hohoho')}`);
+  console.log(`${green.bold('Ben:')} ${replies[2]}`);
   await sleep(3000);
   return main();
 }
@@ -184,4 +184,17 @@ async function quit() {
   console.log(cyan.bold('👋 See you soon!'));
   process.exit();
 }
+
+async function boss() {
+  console.clear();
+  await sleep(1000);
+  console.log(`${yellow.bold('You:')} ${cyan('Do you believe in god?')}`);
+  console.log(`${green.bold('Ben:')} ${replies[2]}`);
+
+  await sleep(2000);
+  console.clear();
+  console.log(`${green.bold('You:')} ${cyan('Do you believe in god.....?')}`);
+  console.log(`${red.bold('Ben:')} ${replies[1]}`);
+}
+
 main();
