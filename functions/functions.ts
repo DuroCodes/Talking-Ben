@@ -124,6 +124,7 @@ export function quit() {
 }
 
 export async function boss() {
+  await sleep(100);
   function health(current: number, max: number) {
     check();
     return `${green.bold(current)}/${red.bold(max)}`;
@@ -188,7 +189,7 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
   async function benHeal() {
     const amount = Math.floor(Math.random() * (bossMaxHealth / 2));
     bossHealth += amount;
-    console.log(green.bold(`*Ben heals himself for ${amount} health*`));
+    console.log(red.bold(`*Ben heals himself for ${amount} health*`));
     await sleep(2000);
   }
   async function benMove() {
@@ -212,10 +213,10 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
     let amount = Math.floor(Math.random() * (playerMaxHealth / 2));
     playerHealth += amount;
     if (playerHealth > playerMaxHealth) {
-      amount = 0;
+      amount = -1;
       playerHealth = playerMaxHealth;
     }
-    console.log(green.bold(amount > 0 ? green.bold(`*You heal ${amount} health!*`) : green.bold('*You are already at full health!*')));
+    console.log(green.bold(amount === -1 ? green.bold(`*You heal ${amount} health!*`) : green.bold('*You are already at full health!*')));
     benMove();
     await sleep(2000);
     showStats();
