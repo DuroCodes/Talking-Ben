@@ -145,12 +145,12 @@ export async function boss() {
     Math.floor(Math.random() * attackAttributes.length),
   ];
 
-  let playerHealth: number = 100;
   const playerMaxHealth: number = 100;
+  let playerHealth: number = playerMaxHealth;
   const playerAttack: number = 30;
 
-  let bossHealth: number = Math.floor(150 * healthAttributes[multipliers[0]][1]);
-  const bossMaxHealth: number = Math.floor(150 * healthAttributes[multipliers[0]][1]);
+  const bossMaxHealth: number = Math.floor(125 * healthAttributes[multipliers[0]][1]);
+  let bossHealth: number = bossMaxHealth;
   const bossAttack: number = Math.floor(25 * attackAttributes[multipliers[1]][1]);
 
   function showStats() {
@@ -216,7 +216,7 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
       amount = -1;
       playerHealth = playerMaxHealth;
     }
-    console.log(green.bold(amount === -1 ? green.bold(`*You heal ${amount} health!*`) : green.bold('*You are already at full health!*')));
+    console.log(green.bold(amount !== -1 ? green.bold(`*You heal ${amount} health!*`) : green.bold('*You are already at full health!*')));
     benMove();
     await sleep(2000);
     showStats();
