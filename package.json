@@ -11,6 +11,7 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "figlet": "^1.5.2",
+    "hotkeys-js": "^3.8.7",
     "inquirer": "^8.2.0",
     "terminal-img": "^2.0.24"
   },

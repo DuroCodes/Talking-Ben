@@ -1,6 +1,6 @@
 # Talking Ben CLI
 
-![Ben CLI]("ben-cli.png")
+![Ben CLI](ben-cli.png)
 
 ---
 
