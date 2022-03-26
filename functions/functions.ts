@@ -187,7 +187,7 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
     }
   }
   async function benHeal() {
-    const amount = Math.floor(Math.random() * (bossMaxHealth / 2));
+    const amount: number = Math.floor(Math.random() * (bossMaxHealth / 2));
     bossHealth += amount;
     console.log(red.bold(`*Ben heals himself for ${amount} health*`));
     await sleep(2000);
@@ -210,7 +210,7 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
     showStats();
   }
   async function heal() {
-    let amount = Math.floor(Math.random() * (playerMaxHealth / 2));
+    let amount: number = Math.floor(Math.random() * (playerMaxHealth / 2));
     playerHealth += amount;
     if (playerHealth > playerMaxHealth) {
       amount = -1;
