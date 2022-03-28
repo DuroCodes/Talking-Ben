@@ -59,6 +59,19 @@ export async function call() {
     },
   }).then(async (answers: any) => {
     if (Math.floor(Math.random() * 14) === 0) calling = false;
+    if (answers.talking.toLowerCase() === 'hang up') {
+      console.log(magenta.bold('*Newspaper sounds.*'));
+      await sleep();
+      return main();
+    }
+    if (answers.talking.toLowerCase().includes('do you believe in god')) {
+      console.log(`${red.bold('Ben:')} ${red.bold('No.')}`);
+      await sleep();
+      console.log(red.bold('*Ben attacks you!*'));
+      await sleep();
+      await boss();
+      return;
+    }
     if (calling && answers.talking.toLowerCase() !== 'hang up') {
       console.log(
         `${green.bold('Ben:')} ${replies[Math.floor(Math.random() * replies.length)]}\n`,
@@ -68,11 +81,6 @@ export async function call() {
     }
     if (!calling) {
       console.log(red.bold('*Ben slams the phone down.*'));
-      await sleep();
-      return main();
-    }
-    if (answers.talking.toLowerCase() === 'hang up') {
-      console.log(magenta.bold('*Newspaper sounds.*'));
       await sleep();
       return main();
     }
