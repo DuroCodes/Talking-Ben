@@ -180,17 +180,18 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
   }
   async function benAttack() {
     if (playerHealth >= 0) {
-      console.log(red.bold('*Ben slashes you in the face*'));
-      await sleep(2000);
       playerHealth -= bossAttack;
+      console.log(red.bold(`*Ben slashes you in the face for ${magenta.bold(bossAttack)} damage!*\n*You are now at ${magenta.bold(playerHealth)} health.*`));
+      await sleep(2000);
       return showStats();
     }
   }
   async function benHeal() {
     const amount: number = Math.floor(Math.random() * (bossMaxHealth / 2));
     bossHealth += amount;
-    console.log(red.bold(`*Ben heals himself for ${amount} health*`));
+    console.log(red.bold(`*Ben heals himself for ${magenta.bold(amount)} health*`));
     await sleep(2000);
+    return showStats();
   }
   async function benMove() {
     if (bossHealth <= bossMaxHealth / 2) {
@@ -204,7 +205,7 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
   }
   async function attack() {
     bossHealth -= playerAttack;
-    console.log(green.bold('*You punch Ben in the head!*'));
+    console.log(green.bold(`*You punch Ben in the head for ${yellow.bold(playerAttack)} damage!*\n*Ben is now at ${yellow.bold(bossHealth)} health.`));
     benMove();
     await sleep(2000);
     showStats();
@@ -216,14 +217,14 @@ ${cyan.bold('🗡 Attack:')} ${yellow.bold(bossAttack)} ${attackAttributes[multi
       amount = -1;
       playerHealth = playerMaxHealth;
     }
-    console.log(green.bold(amount !== -1 ? green.bold(`*You heal ${amount} health!*`) : green.bold('*You are already at full health!*')));
+    console.log(green.bold(amount !== -1 ? green.bold(`*You heal ${yellow.bold(amount)} health!*`) : green.bold('*You are already at full health!*')));
     benMove();
     await sleep(2000);
     showStats();
   }
 
   showStats();
-  console.log(`
+  console.log(`\
 ${magenta.bold('Controls:')}
 ${cyan.bold('🗡 Attack:')} ${red.bold('F')}
 ${cyan.bold('❤️ Heal:')} ${red.bold('H')}
